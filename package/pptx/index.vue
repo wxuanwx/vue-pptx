@@ -18,11 +18,13 @@ const props = withDefaults(
   defineProps<{
     src: string | Blob;
     requestOptions?: any;
-    options?: any;
+    options?: {
+      width?: number;
+      height?: number;
+    };
   }>(),
   {
     requestOptions: () => ({}),
-    options: () => ({}),
   }
 );
 const emits = defineEmits<{
@@ -34,12 +36,15 @@ let pptxViewer: any = null;
 const rootRef = ref<any>(null);
 
 const init = () => {
-  let container = rootRef.value;
-  let width =
-    props.options.width || container.getBoundingClientRect().width || 960;
-  let height =
-    props.options.height || container.getBoundingClientRect().height || 540;
-  pptxViewer = initPptxPreviewer(container, {
+  const width =
+    props.options?.width ||
+    rootRef.value?.getBoundingClientRect?.()?.width ||
+    960;
+  const height =
+    props.options?.height ||
+    rootRef.value?.getBoundingClientRect?.()?.height ||
+    540;
+  pptxViewer = initPptxPreviewer(rootRef.value, {
     width,
     height,
   });
@@ -68,9 +73,7 @@ onMounted(() => {
 });
 watch(
   () => props.src,
-  () => {
-    preview();
-  }
+  () => preview
 );
 defineExpose({ preview });
 </script>
