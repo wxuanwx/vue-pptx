@@ -43,17 +43,13 @@ export default defineConfig(({ mode }) => {
         formats: ['es', 'umd'] // 只生成两种核心格式（足够兼容）
       },
       rollupOptions: {
-        // 核心：外部化所有依赖，不打包进产物
         external: ['vue'],
         output: {
-          // UMD 格式下，映射依赖到全局变量（确保用户使用时能找到依赖）
           globals: {
-            vue: 'vue'
+            'vue': 'vue'
           },
-          // 生产环境：移除注释和调试代码
           comments: false,
-          // 优化：启用 Tree Shaking
-          exports: 'named' // 明确导出名称，方便摇树
+          exports: 'named'
         }
       },
       // 样式优化：压缩 CSS，提取单独文件
@@ -63,9 +59,6 @@ export default defineConfig(({ mode }) => {
     // 开发环境优化：避免不必要的转译
     esbuild: {
       // drop: isProd ? ['console', 'debugger'] : [] // 生产环境移除 console 和 debugger
-    },
-    define: {
-      'process.env.NODE_ENV': JSON.stringify('production')
     }
   }
 })

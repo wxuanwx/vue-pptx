@@ -48,7 +48,6 @@ const init = () => {
     width,
     height,
   });
-  console.log('pptxViewer', pptxViewer)
 };
 const getPptxBlob = async (src: string | Blob) => {
   if (typeof src === "string") {
@@ -58,22 +57,17 @@ const getPptxBlob = async (src: string | Blob) => {
   return src;
 };
 const preview = async () => {
-  console.log('preview', props.src)
   if (props.src) {
     try {
       const buffer = await getPptxBlob(props.src);
-      console.log('buffer', buffer)
       const data = pptxViewer.preview(buffer);
-      console.log('data', data)
       emits("rendered", data);
     } catch (error) {
-      console.error('preview error')
       emits("error", error);
     }
   }
 };
 onMounted(() => {
-  console.log('onMounted')
   init();
   preview();
 });

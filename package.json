@@ -1,11 +1,11 @@
 {
   "name": "vue-pptx",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "type": "module",
   "description": "vue项目ppt库",
   "main": "lib/index.umd.js",
   "module": "lib/index.es.js",
-  "style": "lib/style.css",
+  "style": "lib/index.css",
   "types": "lib/index.d.ts",
   "files": [
     "lib"
@@ -51,7 +51,7 @@
   "keywords": [
     "vue",
     "ppt",
-    "pdf-preview"
+    "pptx"
   ],
   "author": "wangxuan",
   "license": "MIT",
