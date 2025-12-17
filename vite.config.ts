@@ -20,7 +20,7 @@ export default defineConfig(({ mode }) => {
         staticImport: true,  // 静态导入，优化 Tree Shaking
         tsconfigPath: 'tsconfig.app.json',
         include: ['package/**/*'],
-        exclude: ['package/**/__tests__/*', 'package/**/*.stories.ts'],
+        exclude: ['src/**/*', 'package/**/__tests__/*', 'package/**/*.stories.ts'],
         cleanVueFileName: true, // 清理 Vue 组件的 .vue.d.ts 后缀（可选）
         insertTypesEntry: true
       })
@@ -62,7 +62,10 @@ export default defineConfig(({ mode }) => {
     },
     // 开发环境优化：避免不必要的转译
     esbuild: {
-      drop: isProd ? ['console', 'debugger'] : [] // 生产环境移除 console 和 debugger
+      // drop: isProd ? ['console', 'debugger'] : [] // 生产环境移除 console 和 debugger
+    },
+    define: {
+      'process.env.NODE_ENV': JSON.stringify('production')
     }
   }
 })

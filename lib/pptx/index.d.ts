@@ -2,10 +2,12 @@ import { DefineComponent, ExtractPropTypes, ComponentOptionsMixin, PublicProps, 
 declare const _default: DefineComponent<ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
     src: string | Blob;
     requestOptions?: any;
-    options?: any;
+    options?: {
+        width?: number | undefined;
+        height?: number | undefined;
+    } | undefined;
 }>, {
     requestOptions: () => {};
-    options: () => {};
 }>>, {
     preview: () => Promise<void>;
 }, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
@@ -14,16 +16,17 @@ declare const _default: DefineComponent<ExtractPropTypes<__VLS_WithDefaults<__VL
 }, string, PublicProps, Readonly<ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
     src: string | Blob;
     requestOptions?: any;
-    options?: any;
+    options?: {
+        width?: number | undefined;
+        height?: number | undefined;
+    } | undefined;
 }>, {
     requestOptions: () => {};
-    options: () => {};
 }>>> & Readonly<{
     onError?: ((params: any) => any) | undefined;
     onRendered?: ((params: any) => any) | undefined;
 }>, {
     requestOptions: any;
-    options: any;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 export default _default;
 type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;
